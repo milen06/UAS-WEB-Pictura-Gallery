@@ -11,8 +11,6 @@ export default function AuthPage() {
   const [error, setError] = useState("");
   const router = useRouter();
 
-  const ADMIN_EMAIL = "atarazean@gmail.com"; // Ganti sesuai email admin kamu
-
   const handleAuth = async () => {
     setError("");
 
@@ -22,20 +20,15 @@ export default function AuthPage() {
 
     if (error) return setError(error.message);
 
-    const userEmail = isLogin ? data.user?.email : data.session?.user?.email;
-
-    if (userEmail === ADMIN_EMAIL) {
-      router.push("/admin");
-    } else {
-      router.push("/");
-    }
+    // Semua user langsung ke halaman utama
+    router.push("/");
   };
 
   return (
     <div className="min-h-screen bg-white flex items-center justify-center px-4">
       <div className="w-full max-w-md border border-gray-200 shadow-lg rounded-xl p-8">
 
-        {/* ✅ Bagian Logo PNG */}
+        {/* Bagian Logo */}
         <div className="flex justify-center mb-1">
           <img src="/logo.png" alt="Logo" className="h-30 object-contain" />
         </div>
